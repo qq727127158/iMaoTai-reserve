@@ -38,7 +38,7 @@ def decrypt_aes_ecb(ciphertext, key):
     :param key: AES私钥
     :return: 解密后的明文
     """
-    ciphertext = base64.b64decode(ciphertext)
+    ciphertext = base64.urlsafe_b64decode(ciphertext)
     cipher = AES.new(key, AES.MODE_ECB)
     plain_str = unpad(cipher.decrypt(ciphertext), AES.block_size)
     return plain_str.decode()
